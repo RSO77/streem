@@ -27,7 +27,10 @@ window.onload = function () {
    
 
     function img() {
-        context.drawImage(video, 0, 0, video.width, video.height);
+        if(screen.width > 767)
+            context.drawImage(video, 0, 0, 300, 225);
+        else
+            context.drawImage(video, 0, 0, 225, 300);
     };
 
     button1.click(function () {
@@ -50,7 +53,7 @@ window.onload = function () {
     navigator.getUserMedia({video: true}, function (stream) {
         // разрешение от пользователя получено
         // скрываем подсказку
-        allow.style.display = "none";
+        // allow.style.display = "none";
         // получаем url поточного видео
         // console.log(window.URL.createObjectURL(stream));
         videoStreamUrl = window.URL.createObjectURL(stream);

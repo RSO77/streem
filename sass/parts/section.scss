@@ -59,9 +59,41 @@
     -ms-transform: scaleX(-1);
     -moz-transform: scaleX(-1);
     -webkit-transform: scaleX(-1);
+    width:300px;
+    height:225px;
+  }
+  #canvas{
+    width:300px;
+    height:225px;
   }
 
   .display{
     display: none;
   }
-}
+};
+
+@media (max-width: 767px){
+  .container{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    margin: 20px auto 0;
+  }
+  .block{
+    display: block;
+    margin: 20px auto;
+    height: 310px;
+    width: 234px;
+  }
+  #video{
+    height:300px;
+    width:224px;
+  }
+  #canvas{
+    height:300px;
+    width:224px;
+  }
+
+};
