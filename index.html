@@ -20,17 +20,32 @@
     <!--<div id="allow">▲ ▲ ▲ Разрешите использовать камеру ▲ ▲ ▲ <br/> ( Сверху текущей страницы )</div>-->
     <div class="section">
         <div class="container">
+            <div class="btns">
+                <input id="button1" class="vkl" type="button" value="Включить камеру" />
+                <input id="button2" class="photo-btn" disabled type="button" value="Сделать фото!" />
+            </div>
             <div class="window">
-                <div class="block stream">
+                <div class="background-photo">
+                    <div class="bg-block beach">
+                        <img class="bg-photo" src="./media/img/beach/snapaphoto-beach-bg.jpg" alt="">
+                        <img class="overlay display" src="./media/img/beach/snapaphoto-beach-overlay.png" alt="">
+                    </div>
+                    <div class="bg-block ferris">
+                        <img class="bg-photo" src="./media/img/ferris-wheel/snapaphoto-ferris-wheel-bg.jpg" alt="">
+                        <img class="overlay display" src="./media/img/ferris-wheel/snapaphoto-ferris-wheel-overlay.png" alt="">
+                    </div>
+                    <div class="bg-block postcard">
+                        <img class="bg-photo" src="./media/img/postcard/snapaphoto-postcard-bg.jpg" alt="">
+                        <img class="overlay display" src="./media/img/postcard/snapaphoto-postcard-overlay.png" alt="">
+                    </div>
+
+                </div>
+                <div class="block stream  display">
                     <video id="video"  autoplay="autoplay" ></video>
                 </div>
-                <div class="block photo">
-                    <canvas id="canvas" width="300" height="225" ></canvas>
+                <div class="block photo display">
+                    <canvas id="canvas" width="600" height="450" ></canvas>
                 </div>
-            </div>
-            <div class="btns">
-                <!--<input id="button1" class="vkl" type="button" value="Включить камеру" />-->
-                <input id="button2" class="photo-btn" type="button" value="Сделать фото!" />
             </div>
 
         </div>

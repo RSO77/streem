@@ -6,7 +6,7 @@ window.onload = function () {
     var button2 = $('#button2');
     var allow = document.getElementById('allow');
     var context = canvas.getContext('2d');
-    var videoStreamUrl = false;
+    var videoStreamUrl = true;
 
 
 
@@ -24,41 +24,65 @@ window.onload = function () {
         // var img = new Image();
         // img.src = base64dataUrl;
         // window.document.body.appendChild(img);
+
+    $(".bg-block").click( function () {
+        $(".overlay").removeClass('display');
+        $(".bg-block").addClass('display');
+        $(this).removeClass('display');
+        $('.bg-photo').width('700');
+    });
    
 
     function img() {
         if(screen.width > 767)
-            context.drawImage(video, 0, 0, 300, 225);
+            context.drawImage(video, 0, 0, 600, 450);
         else
-            context.drawImage(video, 0, 0, 225, 300);
+            context.drawImage(video, 0, 0, 450, 600);
     };
-
-    button1.click(function () {
-        if(button1.val() == 'Включить камеру')
-        {
+    function videoCam() {
+        if(button1.val() == 'Включить камеру'){
             button1.val('Выключить камеру');
+            video.src = videoStreamUrl;
+            $('.stream').removeClass('display');
+            $('.photo').addClass('display');
+            console.log(button2.val());
+            if(button2.val() == 'отправить')
+                button2.val('Сделать фото!');
         }
-        else
+        else{
             button1.val('Включить камеру');
+            video.src = [];}
+    }
+    button1.click( function () {
+        videoCam();
+        button2.removeAttr('disabled');
     });
     button2.click(function () {
         img();
+            $('.photo').removeClass('display');
+            $('.stream').addClass('display');
+            videoCam();
+        button2.val('отправить');
+
     });
 
     // navigator.getUserMedia  и   window.URL.createObjectURL (смутные времена браузерных противоречий 2012)
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
     window.URL.createObjectURL = window.URL.createObjectURL || window.URL.webkitCreateObjectURL || window.URL.mozCreateObjectURL || window.URL.msCreateObjectURL;
 
+
     // запрашиваем разрешение на доступ к поточному видео камеры
     navigator.getUserMedia({video: true}, function (stream) {
         // разрешение от пользователя получено
         // скрываем подсказку
         // allow.style.display = "none";
+
         // получаем url поточного видео
-        // console.log(window.URL.createObjectURL(stream));
         videoStreamUrl = window.URL.createObjectURL(stream);
+
         // устанавливаем как источник для video
-        video.src = videoStreamUrl;
+        // video.src = videoStreamUrl;
+
     }, function () {
         console.log('что-то не так с видеостримом или пользователь запретил его использовать :P');
     });

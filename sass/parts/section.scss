@@ -12,19 +12,34 @@
     width: 100%;
     text-align: center;
   }
-  .block{
+  .window{
+    position: relative;
+  }
+  .bg-block{
     display: inline-block;
-    margin: 0 70px 50px;
-    vertical-align: top;
-    border: 5px solid #f6f6f6;
-    border-radius: 5px;
-    width: 310px;
-    height: 234px;
-    box-shadow: 0px 0px 50px 3px rgba(235, 235, 235, 0.5);
-    &:hover{
-      border: 5px solid #f1f1f1;
-      box-shadow: 0px 0px 50px 7px rgba(235, 235, 235, 1);
+    position: relative;
+    margin: 50px 10px 0;
+    .bg-photo{
+      width: 250px;
     }
+    .overlay{
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      z-index: 7;
+    }
+  }
+  .block{
+    position: absolute;
+    left: 50%;
+    top: 90px;
+    z-index: 5;
+    transform: translate3d(-50%, 0%, 0) rotate(-5.3deg);
+    width: 586px;
+    height: 550px;
+    overflow: hidden;
   }
   input{
     margin: 0 40px;
@@ -38,10 +53,6 @@
     display: inline-block;
     transition: all .4s ease;
     box-shadow: 0px 0px 30px 3px rgba(244,62,64,0.3);
-    &:hover{
-      background-color: rgba(244, 62, 64, 0.7);
-      box-shadow: 0px 0px 30px 3px rgba(244,62,64,0.5);
-    }
   }
   .photo-btn{
     background-color: #0082C3;
@@ -59,41 +70,41 @@
     -ms-transform: scaleX(-1);
     -moz-transform: scaleX(-1);
     -webkit-transform: scaleX(-1);
-    width:300px;
-    height:225px;
+    width:auto;
+    height:100%;
   }
   #canvas{
-    width:300px;
-    height:225px;
+    width:auto;
+    height:100%;
   }
 
   .display{
     display: none;
   }
 };
-
-@media (max-width: 767px){
-  .container{
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    margin: 20px auto 0;
-  }
-  .block{
-    display: block;
-    margin: 20px auto;
-    height: 310px;
-    width: 234px;
-  }
-  #video{
-    height:300px;
-    width:224px;
-  }
-  #canvas{
-    height:300px;
-    width:224px;
-  }
-
-};
+//
+//@media (max-width: 767px){
+//  .container{
+//    position: relative;
+//    top: 0;
+//    left: 0;
+//    width: 100%;
+//    text-align: center;
+//    margin: 20px auto 0;
+//  }
+//  .block{
+//    display: block;
+//    margin: 20px auto;
+//    height: 310px;
+//    width: 234px;
+//  }
+//  #video{
+//    height:300px;
+//    width:224px;
+//  }
+//  #canvas{
+//    height:300px;
+//    width:224px;
+//  }
+//
+//};
