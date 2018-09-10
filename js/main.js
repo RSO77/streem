@@ -25,11 +25,14 @@ window.onload = function () {
         // img.src = base64dataUrl;
         // window.document.body.appendChild(img);
 
+
     $(".bg-block").click( function () {
         $(".overlay").removeClass('display');
         $(".bg-block").addClass('display');
         $(this).removeClass('display');
         $('.bg-photo').width('700');
+        button1.removeClass('display')
+        button2.removeClass('display')
     });
    
 
