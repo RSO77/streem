@@ -31,8 +31,8 @@ window.onload = function () {
         $(".bg-block").addClass('display');
         $(this).removeClass('display');
         $('.bg-photo').width('700');
-        button1.removeClass('display')
-        button2.removeClass('display')
+        button1.removeClass('display');
+        button2.removeClass('display');
     });
    
 
