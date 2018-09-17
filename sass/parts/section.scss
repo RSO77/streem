@@ -1,6 +1,7 @@
 .section{
   position: relative;
   height: 100vh;
+  background-color: rgba(6, 6, 6, 0.66);
   //f43e40
   //#0082C3
   //transition: all .4s ease;
@@ -14,6 +15,19 @@
   }
   .window{
     position: relative;
+    #number_js{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      font-size: 15px;
+      color: black;
+      font-weight: 700;
+      //transition: all .9s ease;
+    }
+    .transit{
+      transition: all .99s ease;
+    }
   }
   .bg-block{
     display: inline-block;
@@ -41,9 +55,12 @@
     height: 550px;
     overflow: hidden;
   }
+  .photo_js{
+    padding: 49px 0;
+  }
   input{
-    margin: 0 40px;
-    padding: 15px 25px;
+    margin: 0 30px;
+    padding: 15px 20px;
     color: white;
     background-color: #f43e40;
     border: none;
@@ -58,24 +75,22 @@
     background-color: #0082C3;
     box-shadow: 0px 0px 30px 3px rgba(0, 130, 195,0.3);
     transition: all .4s ease;
-    &:hover{
-      background-color: rgba(0, 130, 195, 0.7);
-      box-shadow: 0px 0px 30px 3px rgba(0, 130, 195,0.5);
-    }
+  }
+  .share-btn{
+    background-color: #00c33d;
+    box-shadow: 0px 0px 30px 3px rgba(0, 195, 61, 0.3);
+    transition: all .4s ease;
   }
 
-  video{
+  #video_js{
     transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    -ms-transform: scaleX(-1);
-    -moz-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
     width:auto;
     height:100%;
   }
-  #canvas{
+  #canvas_js{
     width:auto;
-    height:100%;
+    transform: scaleX(-1);
+    //height:100%;
   }
 
   .display{

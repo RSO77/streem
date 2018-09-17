@@ -1,30 +1,48 @@
 window.onload = function () {
 
-    var canvas = document.getElementById('canvas');
-    var video = document.getElementById('video');
-    var button1 = $('#button1');
-    var button2 = $('#button2');
-    var allow = document.getElementById('allow');
+    var canvas = document.getElementById('canvas_js');
+    var video = document.getElementById('video_js');
+    var button1 = $('#button1_js');
+    var button2 = $('#button2_js');
+    var button3 = $('#button3_js');
+    var num = document.getElementById('number_js');
     var context = canvas.getContext('2d');
-    var videoStreamUrl = true;
 
+    //
+    // $.getJSON("test.json", function (data) {
+    //     alert(data);
+    // });
 
+    var i=1;
+    function score (){
+        num.innerHTML = i;
+        $("#number_js").addClass('transit');
+        $('#number_js').css('font-size', 170+'px');
+        setTimeout(function () {
+            if (i < 3){
+                i += 1;
+                score();}}, "1000");
+        setTimeout(function () {
+                $("#number_js").removeClass('transit');
+                $('#number_js').css('font-size', 17+'px');}, "900");
+        if (i == 3){
+            video.src = 'http://192.168.101.147/addons/get-camera-stream.php';
+            setTimeout(function () {
+                num.innerHTML = '';
+                context.drawImage(video, 0, 0, 600, 450);
+                $('.stream_js').addClass('display');
+                $('.photo_js').removeClass('display');
+            },900);}};
 
-        // if (!videoStreamUrl) alert('То-ли вы не нажали "разрешить" в верху окна, то-ли что-то не так с вашим видео стримом')
-        // переворачиваем canvas зеркально по горизонтали (см. описание внизу статьи)
-        context.translate(canvas.width, 0);
-        context.scale(-1, 1);
-        // отрисовываем на канвасе текущий кадр видео
-
-        // получаем data: url изображения c canvas
-        // var base64dataUrl = canvas.toDataURL('image/png');
-        // context.setTransform(1, 0, 0, 1, 0, 0); // убираем все кастомные трансформации canvas
-        // на этом этапе можно спокойно отправить  base64dataUrl на сервер и сохранить его там как файл (ну или типа того)
-        // но мы добавим эти тестовые снимки в наш пример:
-        // var img = new Image();
-        // img.src = base64dataUrl;
-        // window.document.body.appendChild(img);
-
+    function start() {
+        $(".overlay,.photo_js, .stream_js").addClass('display');
+        $(".bg-block").removeClass('display');
+        $('.bg-photo').width('250');
+        button1.addClass('display');
+        button2.addClass('display');
+        button3.addClass('display');
+        i=1;
+    }
 
     $(".bg-block").click( function () {
         $(".overlay").removeClass('display');
@@ -33,8 +51,14 @@ window.onload = function () {
         $('.bg-photo').width('700');
         button1.removeClass('display');
         button2.removeClass('display');
+        button3.removeClass('display');
+        score();
     });
-   
+
+    button1.click( function () {
+        start();
+    });
+
 
     function img() {
         if(screen.width > 767)
@@ -43,51 +67,16 @@ window.onload = function () {
             context.drawImage(video, 0, 0, 450, 600);
     };
     function videoCam() {
-        if(button1.val() == 'Включить камеру'){
-            button1.val('Выключить камеру');
-            video.src = videoStreamUrl;
-            $('.stream').removeClass('display');
-            $('.photo').addClass('display');
-            console.log(button2.val());
-            if(button2.val() == 'отправить')
-                button2.val('Сделать фото!');
-        }
-        else{
-            button1.val('Включить камеру');
-            video.src = [];}
+        $('.photo_js').addClass('display');
+        $('.stream_js').removeClass('display');
+        video.src = 'http://192.168.101.147/addons/get-camera-stream.php';
     }
-    button1.click( function () {
-        videoCam();
-        button2.removeAttr('disabled');
-    });
+
+
     button2.click(function () {
         img();
-            $('.photo').removeClass('display');
-            $('.stream').addClass('display');
-            videoCam();
-        button2.val('отправить');
-
+        $('.stream').addClass('display');
+        $('.photo').removeClass('display');
     });
-
-    // navigator.getUserMedia  и   window.URL.createObjectURL (смутные времена браузерных противоречий 2012)
-    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
-    window.URL.createObjectURL = window.URL.createObjectURL || window.URL.webkitCreateObjectURL || window.URL.mozCreateObjectURL || window.URL.msCreateObjectURL;
-
-
-    // запрашиваем разрешение на доступ к поточному видео камеры
-    navigator.getUserMedia({video: true}, function (stream) {
-        // разрешение от пользователя получено
-        // скрываем подсказку
-        // allow.style.display = "none";
-
-        // получаем url поточного видео
-        videoStreamUrl = window.URL.createObjectURL(stream);
-
-        // устанавливаем как источник для video
-        // video.src = videoStreamUrl;
-
-    }, function () {
-        console.log('что-то не так с видеостримом или пользователь запретил его использовать :P');
-    });
-
+    // console.log('что-то не так с видеостримом или пользователь запретил его использовать :P');
 };

@@ -11,18 +11,20 @@
     <meta name="viewport"
           content="width=device-width,  initial-scale=1, maximum-scale=1.0, user-scalable=0, minimal-ui"/>
     <link rel="stylesheet" href="./media/css/app.min.css">
+
 </head>
 <body>
 <header class="header">
 
 </header>
 <main>
-    <!--<div id="allow">▲ ▲ ▲ Разрешите использовать камеру ▲ ▲ ▲ <br/> ( Сверху текущей страницы )</div>-->
+
     <div class="section">
         <div class="container">
             <div class="btns">
-                <input id="button1" class="vkl display" type="button" value="Включить камеру" />
-                <input id="button2" class="photo-btn display" disabled type="button" value="Сделать фото!" />
+                <input id="button1_js" class="vkl display" type="button" value="обложка" />
+                <input id="button2_js" class="photo-btn display" type="button" value="Сделать фото!" />
+                <input id="button3_js" class="share-btn display" type="button" value="отправить" />
             </div>
             <div class="window">
                 <div class="background-photo">
@@ -40,11 +42,12 @@
                     </div>
 
                 </div>
-                <div class="block stream  display">
-                    <video id="video"  autoplay="autoplay" ></video>
+                <div id="number_js"></div>
+                <div class="block stream_js  display">
+                    <img id="video_js" src="" alt="">
                 </div>
-                <div class="block photo display">
-                    <canvas id="canvas" width="600" height="450" ></canvas>
+                <div class="block photo_js display">
+                    <canvas id="canvas_js" width="600" height="450" ></canvas>
                 </div>
             </div>
 
@@ -57,7 +60,7 @@
 
 </footer>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 
